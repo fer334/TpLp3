@@ -5,8 +5,10 @@ DIR1.3=src/listing1.3/
 DIR2.1=src/listing2.1/
 DIR2.2=src/listing2.2/
 DIR2.3=src/listing2.3/
+DIR3.1=src/listing3.1/
+DIR3.2=src/listing3.2/
 
-all: listing1.1 listing1.2 listing1.3 listing2.1 listing2.2 listing2.3 clean
+all: listing1.1 listing1.2 listing1.3 listing2.1 listing2.2 listing2.3 listing3.1 listing3.2 clean
 
 #1.1
 listing1.1: listing1.2 listing1.3
@@ -27,7 +29,6 @@ listing1.3:
 clean-listing1.3:
 	rm $(DIR1.3)/*.o
 
-
 #2.1
 listing2.1: $(DIR2.1)arglist.o
 	gcc -o programa/arglist $(DIR2.1)arglist.o
@@ -46,9 +47,26 @@ listing2.3: $(DIR2.3)print-env.o
 clean-listing2.3:
 	rm $(DIR2.3)/*.o
 
-#borra todo
+#3.1
+listing3.1: $(DIR3.1)print-pid.o
+	gcc -o programa/print-pid $^
+clean-listing3.1:
+	rm $(DIR3.1)/*.o
+
+#3.2
+listing3.2: $(DIR3.2)system.o
+	gcc -o programa/system $^
+clean-listing3.2:
+	rm $(DIR3.2)/*.o
+
+
+#borra todos los .o
 clean:
 	rm */*/*.o
+
+#borra todos los programas compilados
+clean-programa:
+	rm programa/*
 
 #para todos .o que necesiten .c
 */*/*.o: */*/*.c
