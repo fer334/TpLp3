@@ -7,8 +7,10 @@ DIR2.2=src/listing2.2/
 DIR2.3=src/listing2.3/
 DIR3.1=src/listing3.1/
 DIR3.2=src/listing3.2/
+DIR3.3=src/listing3.3/
+DIR3.4=src/listing3.4/
 
-all: listing1.1 listing1.2 listing1.3 listing2.1 listing2.2 listing2.3 listing3.1 listing3.2 clean
+all: listing1.1 listing1.2 listing1.3 listing2.1 listing2.2 listing2.3 listing3.1 listing3.2 listing3.3 listing3.4 clean
 
 #1.1
 listing1.1: listing1.2 listing1.3
@@ -59,6 +61,17 @@ listing3.2: $(DIR3.2)system.o
 clean-listing3.2:
 	rm $(DIR3.2)/*.o
 
+#3.3
+listing3.3: $(DIR3.3)fork.o
+	gcc -o programa/fork $^
+clean-listing3.3:
+	rm $(DIR3.3)/*.o
+
+#3.4
+listing3.4: $(DIR3.4)fork-exec.o
+	gcc -o programa/fork-exec $^
+clean-listing3.4:
+	rm $(DIR3.4)/*.o
 
 #borra todos los .o
 clean:
