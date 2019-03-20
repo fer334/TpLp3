@@ -46,8 +46,9 @@ listing2.3: $(DIR2.3)print-env.o
 clean-listing2.3:
 	rm $(DIR2.3)/*.o
 
-#para todos .o que necesiten .c
-*/*/*.o: */*/*.c
-
+#borra todo
 clean:
 	rm */*/*.o
+
+#para todos .o que necesiten .c
+*/*/*.o: */*/*.c
