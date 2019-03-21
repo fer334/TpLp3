@@ -5,6 +5,11 @@ DIR1.3=src/listing1.3/
 DIR2.1=src/listing2.1/
 DIR2.2=src/listing2.2/
 DIR2.3=src/listing2.3/
+DIR2.4=src/listing2.4/
+DIR2.5=src/listing2.5/
+DIR2.6=src/listing2.6/
+DIR2.7=src/listing2.7/
+DIR2.8=src/listing2.8/
 DIR3.1=src/listing3.1/
 DIR3.2=src/listing3.2/
 DIR3.3=src/listing3.3/
@@ -15,7 +20,7 @@ DIR3.7=src/listing3.7/
 
 all: cap1 cap2 cap3 clean
 cap1: listing1.1 listing1.2 listing1.3 
-cap2: listing2.1 listing2.2 listing2.3 
+cap2: listing2.1 listing2.2 listing2.3 listing2.4 listing2.5 listing2.6 listing2.7 listing2.8
 cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6 listing3.7
 
 #1.1
@@ -54,6 +59,49 @@ listing2.3: $(DIR2.3)print-env.o
 clean-listing2.3:
 	rm $(DIR2.3)/*.o
 
+#2.4
+listing2.4: $(DIR2.4)cliente.o 
+	gcc -o programa/cliente $^ 
+
+clean-listing2.4:
+	rm $(DIR2.4)cliente.o
+
+
+#2.5
+listing2.5: $(DIR2.5)temp_file.o
+	gcc -o programa/temp_file $^
+
+clean-listing2.5: 
+	rm $(DIR2.5)temp_file.o
+	
+#2.6
+listing2.6: $(DIR2.6)readfile.o
+	gcc -o programa/readfile $^
+
+clean-listing2.6: 
+	rm $(DIR2.6)readfile.o
+
+
+#2.7
+listing2.7: $(DIR2.7)test.o
+	gcc -o programa/test $^
+	
+
+clean-listing2.7: 
+	rm $(DIR2.7)test.o
+
+
+#2.8
+listing2.8: $(DIR2.8)app.o
+	gcc -o programa/app $^
+	
+
+clean-listing2.8: 
+	rm $(DIR2.8)app.o
+
+
+	
+	
 #3.1
 listing3.1: $(DIR3.1)print-pid.o
 	gcc -o programa/print-pid $^
