@@ -11,18 +11,18 @@ DIR3.3=src/listing3.3/
 DIR3.4=src/listing3.4/
 DIR3.5=src/listing3.5/
 DIR3.6=src/listing3.6/
+DIR3.7=src/listing3.7/
 
 all: cap1 cap2 cap3 clean
 cap1: listing1.1 listing1.2 listing1.3 
 cap2: listing2.1 listing2.2 listing2.3 
-cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6
+cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6 listing3.7
 
 #1.1
 listing1.1: listing1.2 listing1.3
 	g++ -o programa/reciprocal $(DIR1.1)main.o $(DIR1.2)reciprocal.o
 clean-listing1.1:
 	rm $(DIR1.1)/*.o
-
 
 #1.2
 listing1.2: $(DIR1.1)main.c 
@@ -89,6 +89,15 @@ listing3.6: $(DIR3.6)zombie.o
 	gcc -o programa/zombie $^
 clean-listing3.6:
 	rm $(DIR3.6)/*.o
+
+#3.7
+listing3.7: $(DIR3.7)sigchld.o
+	gcc -o programa/sigchld $^
+clean-listing3.7:
+	rm $(DIR3.7)/*.o
+
+
+
 
 
 #borra todos los .o
