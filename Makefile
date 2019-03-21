@@ -5,34 +5,156 @@ DIR1.3=src/listing1.3/
 DIR2.1=src/listing2.1/
 DIR2.2=src/listing2.2/
 DIR2.3=src/listing2.3/
+DIR2.4=src/listing2.4/
+DIR2.5=src/listing2.5/
+DIR2.6=src/listing2.6/
+DIR2.7=src/listing2.7/
+DIR2.8=src/listing2.8/
+DIR3.1=src/listing3.1/
+DIR3.2=src/listing3.2/
+DIR3.3=src/listing3.3/
+DIR3.4=src/listing3.4/
+DIR3.5=src/listing3.5/
+DIR3.6=src/listing3.6/
+DIR3.7=src/listing3.7/
+
+all: cap1 cap2 cap3 clean
+cap1: listing1.1 listing1.2 listing1.3 
+cap2: listing2.1 listing2.2 listing2.3 listing2.4 listing2.5 listing2.6 listing2.7 listing2.8
+cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6 listing3.7
 
 #1.1
-programa/reciprocal: $(DIR1.1)main.o $(DIR1.2)reciprocal.o
+listing1.1: listing1.2 listing1.3
 	g++ -o programa/reciprocal $(DIR1.1)main.o $(DIR1.2)reciprocal.o
+clean-listing1.1:
+	rm $(DIR1.1)/*.o
 
 #1.2
-$(DIR1.1)main.o: $(DIR1.1)main.c 
+listing1.2: $(DIR1.1)main.c 
 	gcc -c  $(DIR1.1)main.c -I src/listing1.3 -o src/listing1.1/main.o
-
+clean-listing1.2:
+	rm $(DIR1.2)/*.o
 
 #1.3
-$(DIR1.3)reciprocal.o: 
+listing1.3: 
 	g++ -c $(DIR1.2)reciprocal.cpp -o $(DIR1.2)reciprocal.o
+clean-listing1.3:
+	rm $(DIR1.3)/*.o
 
 #2.1
-programa/arglist: $(dir2.1)arglist.o
-	gcc -o programa/arglist $(dir2.1)arglist.o
+listing2.1: $(DIR2.1)arglist.o
+	gcc -o programa/arglist $(DIR2.1)arglist.o
+clean-listing2.1:
+	rm $(DIR2.1)/*.o
 
 #2.2
-programa/getopt_long: $(DIR2.2)getopt_long.o
-	gcc -o $@ $^
+listing2.2: $(DIR2.2)getopt_long.o
+	gcc -o programa/getopt_long $^
+clean-listing2.2:
+	rm $(DIR2.2)/*.o
 
 #2.3
-programa/print-env: $(DIR2.3)print-env.o
-	gcc -o $@ $^
+listing2.3: $(DIR2.3)print-env.o
+	gcc -o programa/print-env $^
+clean-listing2.3:
+	rm $(DIR2.3)/*.o
+
+#2.4
+listing2.4: $(DIR2.4)cliente.o 
+	gcc -o programa/cliente $^ 
+
+clean-listing2.4:
+	rm $(DIR2.4)cliente.o
+
+
+#2.5
+listing2.5: $(DIR2.5)temp_file.o
+	gcc -o programa/temp_file $^
+
+clean-listing2.5: 
+	rm $(DIR2.5)temp_file.o
+	
+#2.6
+listing2.6: $(DIR2.6)readfile.o
+	gcc -o programa/readfile $^
+
+clean-listing2.6: 
+	rm $(DIR2.6)readfile.o
+
+
+#2.7
+listing2.7: $(DIR2.7)test.o
+	gcc -o programa/test $^
+	
+
+clean-listing2.7: 
+	rm $(DIR2.7)test.o
+
+
+#2.8
+listing2.8: $(DIR2.8)app.o
+	gcc -o programa/app $^
+	
+
+clean-listing2.8: 
+	rm $(DIR2.8)app.o
+
+
+	
+	
+#3.1
+listing3.1: $(DIR3.1)print-pid.o
+	gcc -o programa/print-pid $^
+clean-listing3.1:
+	rm $(DIR3.1)/*.o
+
+#3.2
+listing3.2: $(DIR3.2)system.o
+	gcc -o programa/system $^
+clean-listing3.2:
+	rm $(DIR3.2)/*.o
+
+#3.3
+listing3.3: $(DIR3.3)fork.o
+	gcc -o programa/fork $^
+clean-listing3.3:
+	rm $(DIR3.3)/*.o
+
+#3.4
+listing3.4: $(DIR3.4)fork-exec.o
+	gcc -o programa/fork-exec $^
+clean-listing3.4:
+	rm $(DIR3.4)/*.o
+
+#3.5
+listing3.5: $(DIR3.5)sigusr1.o
+	gcc -o programa/sigusr1 $^
+clean-listing3.5:
+	rm $(DIR3.5)/*.o
+
+#3.6
+listing3.6: $(DIR3.6)zombie.o
+	gcc -o programa/zombie $^
+clean-listing3.6:
+	rm $(DIR3.6)/*.o
+
+#3.7
+listing3.7: $(DIR3.7)sigchld.o
+	gcc -o programa/sigchld $^
+clean-listing3.7:
+	rm $(DIR3.7)/*.o
+
+
+
+
+
+#borra todos los .o
+clean:
+	rm */*/*.o
+
+#borra todos los programas compilados
+clean-programa:
+	rm programa/*
 
 #para todos .o que necesiten .c
 */*/*.o: */*/*.c
-
-clean:
-	rm */*/*.o
