@@ -12,11 +12,25 @@ DIR3.4=src/listing3.4/
 DIR3.5=src/listing3.5/
 DIR3.6=src/listing3.6/
 DIR3.7=src/listing3.7/
+DIR5.1=src/listing5.1/
+DIR5.2=src/listing5.2/
+DIR5.3=src/listing5.3/
+DIR5.4=src/listing5.4/
+DIR5.5=src/listing5.5/
+DIR5.6=src/listing5.6/
+DIR5.7=src/listing5.7/
+DIR5.8=src/listing5.8/
+DIR5.9=src/listing5.9/
+DIR5.10=src/listing5.10/
+DIR5.11=src/listing5.11/
+DIR5.12=src/listing5.12/
 
-all: cap1 cap2 cap3 clean
+all: cap1 cap2 cap3 cap5 clean
 cap1: listing1.1 listing1.2 listing1.3 
 cap2: listing2.1 listing2.2 listing2.3 
 cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6 listing3.7
+cap5: listing5.1 listing5.2 listing5.3 listing5.4 listing5.5 listing5.6 listing5.7\
+listing5.8 listing5.9 listing5.10 listing5.11 listing5.12
 
 #1.1
 listing1.1: listing1.2 listing1.3
@@ -96,8 +110,83 @@ listing3.7: $(DIR3.7)sigchld.o
 clean-listing3.7:
 	rm $(DIR3.7)/*.o
 
+#5.1
+listing5.1: $(DIR5.1)shm.o
+	gcc -o programa/shm $^
+clean-listing5.1:
+	rm $(DIR5.1)/*.o
 
+#5.2
+listing5.2: $(DIR5.2)sem_all_deall.o
+	gcc -o programa/sem_all_deall $^
+clean-listing5.2:
+	rm $(DIR5.2)/*.o
 
+#5.3
+listing5.3: $(DIR5.3)sem_init.o
+	gcc -o programa/sem_init $^
+clean-listing5.3:
+	rm $(DIR5.3)/*.o
+
+#5.4
+listing5.4: $(DIR5.4)sem_pv.o
+	gcc -o programa/sem_pv $^
+clean-listing5.4:
+	rm $(DIR5.4)/*.o
+
+#5.5
+listing5.5: $(DIR5.5)mmap-write.o
+	gcc -o programa/mmap-write $^
+clean-listing5.5:
+	rm $(DIR5.5)/*.o
+
+#5.6
+listing5.6: $(DIR5.6)mmap-read.o
+	gcc -o programa/mmap-read $^
+clean-listing5.6:
+	rm $(DIR5.6)/*.o
+
+#5.7
+listing5.7: $(DIR5.7)pipe.o
+	gcc -o programa/pipe $^
+clean-listing5.7:
+	rm $(DIR5.7)/*.o
+
+#5.8
+listing5.8: $(DIR5.8)dup2.o
+	gcc -o programa/dup2 $^
+clean-listing5.8:
+	rm $(DIR5.8)/*.o
+
+#5.9
+listing5.9: $(DIR5.9)popen.o
+	gcc -o programa/popen $^
+clean-listing5.9:
+	rm $(DIR5.9)/*.o
+
+#5.10
+listing5.10: $(DIR5.10)socket-server.o
+	gcc -o programa/socket-server $^
+$(DIR5.10)socket-server.o:
+	gcc -c -w -o $@ $(DIR5.10)socket-server.c
+clean-listing5.10:
+	rm $(DIR5.10)/*.o
+
+#5.11
+listing5.11: $(DIR5.11)socket-client.o
+	gcc -o programa/socket-client $^
+$(DIR5.11)socket-client.o:
+	gcc -c -w -o $@ $(DIR5.11)socket-client.c
+clean-listing5.11:
+	rm $(DIR5.11)/*.o
+
+#5.12
+listing5.12: $(DIR5.12)socket-inet.o
+	gcc -o programa/socket-inet $^
+$(DIR5.12)socket-inet.o:
+	gcc -c -w -o $@ $(DIR5.12)socket-inet.c
+clean-listing5.12:
+	rm $(DIR5.12)/*.o
 
 
 #borra todos los .o
