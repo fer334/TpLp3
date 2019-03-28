@@ -1,71 +1,34 @@
-#se guarda en la variable la direccion del directorio
-DIR1.1=src/listing1.1/
-DIR1.2=src/listing1.2/
-DIR1.3=src/listing1.3/
-DIR2.1=src/listing2.1/
-DIR2.2=src/listing2.2/
-DIR2.3=src/listing2.3/
 DIR2.4=src/listing2.4/
 DIR2.5=src/listing2.5/
 DIR2.6=src/listing2.6/
 DIR2.7=src/listing2.7/
 DIR2.8=src/listing2.8/
-DIR3.1=src/listing3.1/
-DIR3.2=src/listing3.2/
-DIR3.3=src/listing3.3/
-DIR3.4=src/listing3.4/
-DIR3.5=src/listing3.5/
-DIR3.6=src/listing3.6/
-DIR3.7=src/listing3.7/
+DIR4.1=src/listing4.1/
+DIR4.2=src/listing4.2/
+DIR4.3=src/listing4.3/
+DIR4.4=src/listing4.4/
+DIR4.5=src/listing4.5/
+DIR4.6=src/listing4.6/
+DIR4.7=src/listing4.7/
+DIR4.8=src/listing4.8/
+DIR4.9=src/listing4.9/
+DIR4.10=src/listing4.10/
+DIR4.11=src/listing4.11/
+DIR4.12=src/listing4.12/
+DIR4.13=src/listing4.13/
+DIR4.14=src/listing4.14/
+DIR4.15=src/listing4.15/
 
-all: cap1 cap2 cap3 clean
-cap1: listing1.1 listing1.2 listing1.3 
-cap2: listing2.1 listing2.2 listing2.3 listing2.4 listing2.5 listing2.6 listing2.7 listing2.8
-cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6 listing3.7
 
-#1.1
-listing1.1: listing1.2 listing1.3
-	g++ -o programa/reciprocal $(DIR1.1)main.o $(DIR1.2)reciprocal.o
-clean-listing1.1:
-	rm $(DIR1.1)/*.o
-
-#1.2
-listing1.2: $(DIR1.1)main.c 
-	gcc -c  $(DIR1.1)main.c -I src/listing1.3 -o src/listing1.1/main.o
-clean-listing1.2:
-	rm $(DIR1.2)/*.o
-
-#1.3
-listing1.3: 
-	g++ -c $(DIR1.2)reciprocal.cpp -o $(DIR1.2)reciprocal.o
-clean-listing1.3:
-	rm $(DIR1.3)/*.o
-
-#2.1
-listing2.1: $(DIR2.1)arglist.o
-	gcc -o programa/arglist $(DIR2.1)arglist.o
-clean-listing2.1:
-	rm $(DIR2.1)/*.o
-
-#2.2
-listing2.2: $(DIR2.2)getopt_long.o
-	gcc -o programa/getopt_long $^
-clean-listing2.2:
-	rm $(DIR2.2)/*.o
-
-#2.3
-listing2.3: $(DIR2.3)print-env.o
-	gcc -o programa/print-env $^
-clean-listing2.3:
-	rm $(DIR2.3)/*.o
-
+all: listing2.4 clean-listing2.4 listing2.5 clean-listing2.5 listing2.6 clean-listing2.6 listing2.7 clean-listing2.7 listing2.8 clean-listing2.8 listing4.1 clean-listing4.1 listing4.2 clean-listing4.2 listing4.3 clean-listing4.3 listing4.4 clean-listing4.4 listing4.5 clean-listing4.5 listing4.6 clean-listing4.6 listing4.7 clean-listing4.7 listing4.8 clean-listing4.8 listing4.9 clean-listing4.9 listing4.10 clean-listing4.10 listing4.11 clean-listing4.11 listing4.12 clean-listing4.12 listing4.13 clean-listing4.13 listing4.14 clean-listing4.14 listing4.15 clean-listing4.15 clean
+	
 #2.4
 listing2.4: $(DIR2.4)cliente.o 
 	gcc -o programa/cliente $^ 
 
 clean-listing2.4:
 	rm $(DIR2.4)cliente.o
-
+ 
 
 #2.5
 listing2.5: $(DIR2.5)temp_file.o
@@ -73,13 +36,17 @@ listing2.5: $(DIR2.5)temp_file.o
 
 clean-listing2.5: 
 	rm $(DIR2.5)temp_file.o
-	
+
+
+
+
 #2.6
 listing2.6: $(DIR2.6)readfile.o
 	gcc -o programa/readfile $^
 
 clean-listing2.6: 
 	rm $(DIR2.6)readfile.o
+
 
 
 #2.7
@@ -100,61 +67,134 @@ clean-listing2.8:
 	rm $(DIR2.8)app.o
 
 
+
+#4.1
+listing4.1: $(DIR4.1)thread-create.o
+	cc -o programa/thread-create $^ -lpthread
 	
 	
-#3.1
-listing3.1: $(DIR3.1)print-pid.o
-	gcc -o programa/print-pid $^
-clean-listing3.1:
-	rm $(DIR3.1)/*.o
 
-#3.2
-listing3.2: $(DIR3.2)system.o
-	gcc -o programa/system $^
-clean-listing3.2:
-	rm $(DIR3.2)/*.o
+clean-listing4.1: 
+	rm $(DIR4.1)thread-create.o
 
-#3.3
-listing3.3: $(DIR3.3)fork.o
-	gcc -o programa/fork $^
-clean-listing3.3:
-	rm $(DIR3.3)/*.o
+#4.2
+listing4.2: $(DIR4.2)thread-create2.o
+	cc -o programa/thread-create2 $^ -lpthread
+	
 
-#3.4
-listing3.4: $(DIR3.4)fork-exec.o
-	gcc -o programa/fork-exec $^
-clean-listing3.4:
-	rm $(DIR3.4)/*.o
-
-#3.5
-listing3.5: $(DIR3.5)sigusr1.o
-	gcc -o programa/sigusr1 $^
-clean-listing3.5:
-	rm $(DIR3.5)/*.o
-
-#3.6
-listing3.6: $(DIR3.6)zombie.o
-	gcc -o programa/zombie $^
-clean-listing3.6:
-	rm $(DIR3.6)/*.o
-
-#3.7
-listing3.7: $(DIR3.7)sigchld.o
-	gcc -o programa/sigchld $^
-clean-listing3.7:
-	rm $(DIR3.7)/*.o
+clean-listing4.2: 
+	rm $(DIR4.2)thread-create2.o
 
 
+#4.3
+listing4.3: $(DIR4.3)thread-create2.1.o
+	cc -o programa/thread-create2.1 $^ -lpthread
+	
+	
+
+clean-listing4.3: 
+	rm $(DIR4.3)thread-create2.1.o
+
+#4.4
+listing4.4: $(DIR4.4)primes.o
+	cc -o programa/primes $^ -lpthread
+	
+
+clean-listing4.4: 
+	rm $(DIR4.4)primes.o
+
+#4.5
+listing4.5: $(DIR4.5)detached.o
+	cc -o programa/detached $^ -lpthread
+	
+
+clean-listing4.5: 
+	rm $(DIR4.5)detached.o
+
+#4.6
+listing4.6: $(DIR4.6)critical-section.o
+	cc -o programa/critical-section $^ -lpthread
+	
+
+clean-listing4.6: 
+	rm $(DIR4.6)critical-section.o
+
+#4.7
+listing4.7: $(DIR4.7)tsd.o
+	cc -o programa/tsd $^ -lpthread
+	
+
+clean-listing4.7: 
+	rm $(DIR4.7)tsd.o
+
+#4.8
+listing4.8: $(DIR4.8)cleanup.o
+	cc -o programa/cleanup $^ -lpthread
+	
+
+clean-listing4.8: 
+	rm $(DIR4.8)cleanup.o
+
+#4.9
+listing4.9: $(DIR4.9)cxx-exit.o
+	g++ -o programa/cxx-exit $^ -lpthread
+	
+
+clean-listing4.9: 
+	rm $(DIR4.9)cxx-exit.o
+
+#4.10*
+listing4.10: $(DIR4.10)job-queue1.o
+	cc -o programa/job-queue1 $^ -lpthread
+	
+
+clean-listing4.10: 
+	rm $(DIR4.10)job-queue1.o
+
+#4.11*
+listing4.11: $(DIR4.11)job-queue2.o
+	cc -o programa/job-queue2 $^ -lpthread
+	
+
+clean-listing4.11: 
+	rm $(DIR4.11)job-queue2.o
+
+#4.12*
+listing4.12: $(DIR4.12)job-queue3.o
+	cc -o programa/job-queue3 $^ -lpthread
+	
+
+clean-listing4.12: 
+	rm $(DIR4.12)job-queue3.o
+
+#4.13*
+listing4.13: $(DIR4.13)spin-condvar.o
+	cc -o programa/spin-condvar $^ -lpthread
+	
+
+clean-listing4.13: 
+	rm $(DIR4.13)spin-condvar.o
+
+#4.14*
+listing4.14: $(DIR4.14)condvar.o
+	cc -o programa/condvar $^ -lpthread
+	
+
+clean-listing4.14: 
+	rm $(DIR4.14)condvar.o
+
+#4.15*
+listing4.15: $(DIR4.15)thread-pid.o
+	cc -o programa/thread-pid $^ -lpthread
+	
+
+clean-listing4.15: 
+	rm $(DIR4.15)thread-pid.o
 
 
-
-#borra todos los .o
+#GENERAl
 clean:
 	rm */*/*.o
 
-#borra todos los programas compilados
-clean-programa:
-	rm programa/*
-
-#para todos .o que necesiten .c
-*/*/*.o: */*/*.c
+*/*/*.o: */*/*.c */*/*.cpp
+	
