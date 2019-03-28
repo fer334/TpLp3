@@ -1,5 +1,0 @@
-arglist
-a.txt
-getopt_long
-print-env
-reciprocal
