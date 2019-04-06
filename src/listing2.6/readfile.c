@@ -3,7 +3,20 @@
 #include<sys/stat.h>
 #include<sys/types.h>
 #include<unistd.h>
+#include<string.h>
+#include<stdio.h>
 
+char* read_from_file (const char* filename, size_t length);
+
+int main(int argc, char *argv[])
+{
+	char *c;
+ 	char *p;
+ 	long tam = strtol(argv[2], &p, 10);
+  	c = read_from_file(argv[1],tam);
+  	printf("%s\n", c);
+  	return 0;
+}
 
 char* read_from_file (const char* filename, size_t length){
 	char* buffer;

@@ -10,6 +10,7 @@ DIR2.5=src/listing2.5/
 DIR2.6=src/listing2.6/
 DIR2.7=src/listing2.7/
 DIR2.8=src/listing2.8/
+DIR2.9=src/listing2.9/
 DIR3.1=src/listing3.1/
 DIR3.2=src/listing3.2/
 DIR3.3=src/listing3.3/
@@ -47,7 +48,8 @@ DIR5.12=src/listing5.12/
 
 all: cap1 cap2 cap3 cap4 cap5 clean
 cap1: listing1.1 listing1.2 listing1.3 
-cap2: listing2.1 listing2.2 listing2.3 
+cap2: listing2.1 listing2.2 listing2.3 listing2.4 listing2.5 listing2.6 listing2.7\
+listing2.8 listing2.9 
 cap3: listing3.1 listing3.2 listing3.3 listing3.4 listing3.5 listing3.6 listing3.7
 cap4: listing4.1 listing4.2 listing4.3 listing4.4 listing4.5 listing4.6 listing4.7\
 listing4.8 listing4.9 listing4.10 listing4.11 listing4.12 listing4.13 listing4.14\
@@ -120,6 +122,14 @@ listing2.8: $(DIR2.8)app.o
 	gcc -o programa/app $^
 clean-listing2.8: 
 	rm $(DIR2.8)app.o
+
+#2.9 
+listing2.9: libtiff $(DIR2.9)tifftest.o
+	gcc -o programa/tifftest $(DIR2.9)tifftest.o
+libtiff: 
+	sudo apt-get install libtiff4-dev
+clean-listing2.9: 
+	rm $(DIR2.9)tifftest.o
 
 #3.1
 listing3.1: $(DIR3.1)print-pid.o
