@@ -7,4 +7,4 @@ make
 ```
 Ahora esto lo vamos a usar para Sistemas Distribuidos
 
-QQ
+AAAAaaa
